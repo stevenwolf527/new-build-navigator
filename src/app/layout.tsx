@@ -10,6 +10,8 @@ const manrope = Manrope({
   variable: "--font-manrope",
 });
 
+const SITE_URL = "https://conewbuildnavigator.com";
+
 export const metadata: Metadata = {
   title: {
     default: "Colorado New Build Navigator | Find the Best New Construction Homes",
@@ -25,10 +27,38 @@ export const metadata: Metadata = {
     "Aurora new builds",
     "Colorado home builders",
   ],
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: "website",
     locale: "en_US",
+    url: SITE_URL,
     siteName: "Colorado New Build Navigator",
+    title: "Colorado New Build Navigator",
+    description:
+      "Find the best new construction homes in Denver and surrounding areas. Compare builders, incentives, and communities.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Colorado New Build Navigator — Find the Best New Construction Homes in Colorado",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Colorado New Build Navigator",
+    description:
+      "Find the best new construction homes in Denver and surrounding areas. Compare builders, incentives, and communities.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
 };
 

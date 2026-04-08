@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
   explore: [
@@ -29,21 +30,13 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 bg-brand-500 rounded-[10px] flex items-center justify-center">
-                <svg
-                  className="w-[18px] h-[18px] text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1m-2 0h2"
-                  />
-                </svg>
-              </div>
+              <Image
+                src="/logo.svg"
+                alt="Colorado New Build Navigator"
+                width={36}
+                height={36}
+                className="invert brightness-200"
+              />
               <span className="text-[15px] font-semibold text-white">CO New Build Navigator</span>
             </div>
             <p className="text-[14px] text-gray-400 leading-[1.6] mb-6">

@@ -39,7 +39,7 @@ export default function VideosPage() {
           <SectionHeader
             eyebrow="Watch & Learn"
             title="Video Hub"
-            description="Tours, comparisons, and buying tips \u2014 everything you need to navigate Colorado new construction, organized and on demand."
+            description="Tours, comparisons, and buying tips — everything you need to navigate Colorado new construction, organized and on demand."
           />
         </div>
       </section>

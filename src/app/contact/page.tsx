@@ -4,7 +4,7 @@ import { LeadForm } from "@/components/LeadForm";
 export const metadata: Metadata = {
   title: "Get Your New Build List",
   description:
-    "Tell us what you're looking for and receive a curated list of the best new construction homes in Parker, Castle Rock, Aurora, and SE Denver \u2014 with honest insights, not sales pitches.",
+    "Tell us what you're looking for and receive a curated list of the best new construction homes in Parker, Castle Rock, Aurora, and SE Denver — with honest insights, not sales pitches.",
 };
 
 const expectations = [
@@ -16,7 +16,7 @@ const expectations = [
       </svg>
     ),
     title: "A personalized new build list",
-    description: "Curated to your budget, timeline, and preferred areas \u2014 not a generic MLS dump.",
+    description: "Curated to your budget, timeline, and preferred areas — not a generic MLS dump.",
   },
   {
     color: { bg: "bg-orange-50", fg: "text-orange-500" },
@@ -77,7 +77,7 @@ export default function ContactPage() {
             <p className="mt-7 text-[17px] text-gray-500 leading-[1.6]">
               Tell us what you&apos;re looking for and we&apos;ll send you a
               personalized shortlist of new construction communities that
-              actually fit your needs \u2014 with honest insights on every one.
+              actually fit your needs — with honest insights on every one.
             </p>
           </div>
 

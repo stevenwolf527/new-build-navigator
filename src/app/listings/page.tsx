@@ -18,9 +18,9 @@ const builders = getUniqueBuilders();
 const priceRanges = [
   { value: "", label: "Any Price" },
   { value: "0-500000", label: "Under $500K" },
-  { value: "500000-650000", label: "$500K \u2013 $650K" },
-  { value: "650000-800000", label: "$650K \u2013 $800K" },
-  { value: "800000-1000000", label: "$800K \u2013 $1M" },
+  { value: "500000-650000", label: "$500K – $650K" },
+  { value: "650000-800000", label: "$650K – $800K" },
+  { value: "800000-1000000", label: "$800K – $1M" },
   { value: "1000000-999999999", label: "$1M+" },
 ];
 
@@ -177,7 +177,7 @@ export default function ListingsPage() {
           <SectionHeader
             eyebrow="Get Personalized Help"
             title="Not finding what you need?"
-            description="Tell us what you're looking for and we'll send you a curated list of new builds that match your criteria \u2014 including off-market opportunities."
+            description="Tell us what you're looking for and we'll send you a curated list of new builds that match your criteria — including off-market opportunities."
             align="center"
           />
           <LeadForm source="listings-page" className="max-w-xl mx-auto" />

@@ -268,7 +268,7 @@ export default function Home() {
                 </p>
                 <ul className="space-y-4">
                   {[
-                    "Why using the builder\u2019s lender isn\u2019t always best",
+                    "Why using the builder's lender isn't always best",
                     "The inspection mistake that costs thousands",
                     "How to negotiate incentives most buyers miss",
                     "Why your agent choice matters more with new builds",

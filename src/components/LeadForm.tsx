@@ -10,9 +10,9 @@ interface LeadFormProps {
 }
 
 const timelineOptions = [
-  { value: "0-3-months", label: "0\u20133 months" },
-  { value: "3-6-months", label: "3\u20136 months" },
-  { value: "6-12-months", label: "6\u201312 months" },
+  { value: "0-3-months", label: "0–3 months" },
+  { value: "3-6-months", label: "3–6 months" },
+  { value: "6-12-months", label: "6–12 months" },
   { value: "12-plus-months", label: "12+ months" },
 ];
 
@@ -28,10 +28,10 @@ const areaOptions = [
 
 const budgetOptions = [
   "Under $400K",
-  "$400K\u2013$500K",
-  "$500K\u2013$650K",
-  "$650K\u2013$800K",
-  "$800K\u2013$1M",
+  "$400K–$500K",
+  "$500K–$650K",
+  "$650K–$800K",
+  "$800K–$1M",
   "$1M+",
 ];
 
@@ -155,7 +155,7 @@ export function LeadForm({ source = "website", compact = false, className }: Lea
             id="message"
             name="message"
             rows={3}
-            placeholder="Tell us about what you're looking for \u2014 builders you like, must-haves, questions..."
+            placeholder="Tell us about what you're looking for — builders you like, must-haves, questions..."
             className={cn(inputClasses, "resize-none")}
           />
         </div>

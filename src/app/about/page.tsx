@@ -56,7 +56,7 @@ const reasons = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
       </svg>
     ),
-    title: "Raw data isn\u2019t the same as insight",
+    title: "Raw data isn't the same as insight",
     description:
       "Zillow and Realtor.com show you listings. We interpret them. We've walked the model homes, compared the specs, and can tell you what a listing page never will.",
   },
@@ -73,7 +73,7 @@ const processSteps = [
     num: "02",
     title: "We research and curate",
     description:
-      "We match your criteria against communities we've personally toured and evaluated. No algorithmic guesswork \u2014 just informed picks.",
+      "We match your criteria against communities we've personally toured and evaluated. No algorithmic guesswork — just informed picks.",
   },
   {
     num: "03",
@@ -110,7 +110,7 @@ export default function AboutPage() {
               Colorado New Build Navigator exists because buying new
               construction shouldn&apos;t mean navigating builder marketing
               alone. We tour the communities, evaluate the builders, and give
-              you the honest take \u2014 so you can buy smarter.
+              you the honest take — so you can buy smarter.
             </p>
           </div>
         </div>
@@ -148,7 +148,7 @@ export default function AboutPage() {
                 getting swept up in the staging, and making decisions based on
                 incomplete information. Builder websites are marketing
                 material. Sales agents work for the builder. And Zillow can
-                only show you what&apos;s listed \u2014 not what it actually means.
+                only show you what&apos;s listed — not what it actually means.
               </p>
               <p>
                 New construction is fundamentally different from resale. The
@@ -162,7 +162,7 @@ export default function AboutPage() {
                 Parker, Castle Rock, Aurora, and SE Denver. We compare
                 builders side by side. We track incentive trends and know when
                 a deal is genuinely good versus when it&apos;s just marketing.
-                And we share all of that with you \u2014 for free \u2014 because we
+                And we share all of that with you — for free — because we
                 believe informed buyers make better decisions.
               </p>
             </div>
@@ -175,8 +175,8 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Why It Matters"
-            title="New Construction Isn\u2019t Like Buying Resale"
-            description="Most real estate advice is built around existing homes. New builds play by different rules \u2014 and most buyers learn that the hard way."
+            title="New Construction Isn't Like Buying Resale"
+            description="Most real estate advice is built around existing homes. New builds play by different rules — and most buyers learn that the hard way."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 lg:gap-8">
             {reasons.map((reason) => (
@@ -205,7 +205,7 @@ export default function AboutPage() {
           <SectionHeader
             eyebrow="How It Works"
             title="From Overwhelmed to Informed in 24 Hours"
-            description="We keep the process simple. You tell us what you need, we do the legwork, and you get a curated list \u2014 not a data dump."
+            description="We keep the process simple. You tell us what you need, we do the legwork, and you get a curated list — not a data dump."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {processSteps.map((step) => (
@@ -257,7 +257,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-[17px] text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
             Tell us what you&apos;re looking for and we&apos;ll send you a
-            curated list of the best new construction options \u2014 with honest
+            curated list of the best new construction options — with honest
             insights, not sales pitches.
           </p>
           <Link

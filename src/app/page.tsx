@@ -138,9 +138,9 @@ export default function Home() {
             <div className="relative">
               <div className="relative rounded-[24px] overflow-hidden shadow-xl aspect-[4/3] bg-gray-100">
                 <ResilientImage
-                  src={getHeroImage()}
+                  src="/hero.jpg"
                   fallbackSrc={FALLBACK_IMAGES.primary}
-                  alt="Modern new construction home in Colorado"
+                  alt="Colorado new construction community with mountain views"
                   fill
                   className="object-cover"
                   priority

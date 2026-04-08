@@ -14,11 +14,6 @@ const footerLinks = {
     { href: "/communities?city=Parker", label: "Parker" },
     { href: "/communities?city=Thornton", label: "Thornton" },
     { href: "/communities?city=Brighton", label: "Brighton" },
-    { href: "/communities?city=Commerce+City", label: "Commerce City" },
-    { href: "/communities?city=Centennial", label: "Centennial" },
-    { href: "/communities?city=Littleton", label: "Littleton" },
-    { href: "/communities?city=Erie", label: "Erie" },
-    { href: "/communities?city=Denver", label: "Denver" },
   ],
   resources: [
     { href: "/contact", label: "Get Your New Build List" },
@@ -56,10 +51,10 @@ export function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 lg:py-16">
-        {/* Main layout: brand anchor left, nav columns right */}
-        <div className="flex flex-col lg:flex-row lg:gap-20">
-          {/* Brand block — fixed-width anchor */}
-          <div className="lg:w-[280px] shrink-0 mb-12 lg:mb-0">
+        {/* Main layout: brand anchored left, nav pushed right */}
+        <div className="flex flex-col lg:flex-row lg:justify-between">
+          {/* Brand block — anchored left */}
+          <div className="lg:max-w-[280px] shrink-0 mb-12 lg:mb-0">
             <div className="flex items-center gap-2.5 mb-4">
               <Image
                 src="/logo.svg"
@@ -72,7 +67,7 @@ export function Footer() {
                 CO New Build Navigator
               </span>
             </div>
-            <p className="text-[13px] text-gray-400 leading-[1.65] mb-5 max-w-[260px]">
+            <p className="text-[13px] text-gray-400 leading-[1.65] mb-5">
               Helping Colorado buyers find the best new construction homes
               without overpaying. Local expertise, builder insights, and honest
               guidance.
@@ -90,9 +85,8 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Nav columns — grouped unit */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-10 lg:gap-x-16 flex-1">
-            {/* Explore */}
+          {/* Nav columns — grouped and pushed right */}
+          <div className="flex gap-16">
             <FooterColumn title="Explore">
               <ul className="space-y-2.5">
                 {footerLinks.explore.map((link) => (
@@ -101,16 +95,14 @@ export function Footer() {
               </ul>
             </FooterColumn>
 
-            {/* Areas */}
             <FooterColumn title="Areas">
-              <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+              <ul className="space-y-2.5">
                 {footerLinks.areas.map((link) => (
                   <FooterLink key={link.href} {...link} />
                 ))}
               </ul>
             </FooterColumn>
 
-            {/* Resources */}
             <FooterColumn title="Resources">
               <ul className="space-y-2.5">
                 {footerLinks.resources.map((link) => (

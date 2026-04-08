@@ -18,21 +18,21 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "max-w-2xl mb-10",
+        "max-w-2xl mb-14",
         align === "center" && "mx-auto text-center",
         className
       )}
     >
       {eyebrow && (
-        <p className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-2">
+        <p className="text-[13px] font-semibold text-gray-500 uppercase tracking-widest mb-3">
           {eyebrow}
         </p>
       )}
-      <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
+      <h2 className="text-3xl sm:text-[40px] font-bold text-gray-900 leading-[1.15]" style={{ letterSpacing: "-0.02em" }}>
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-lg text-gray-500 leading-relaxed">{description}</p>
+        <p className="mt-5 text-[17px] text-gray-500 leading-relaxed">{description}</p>
       )}
     </div>
   );

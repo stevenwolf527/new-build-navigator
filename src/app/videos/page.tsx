@@ -32,31 +32,31 @@ export default function VideosPage() {
   }, [allVideos, activeCategory, selectedArea]);
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50/40">
       {/* Hero section */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <section className="bg-white border-b border-gray-100/80">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-20 sm:py-24">
           <SectionHeader
             eyebrow="Watch & Learn"
             title="Video Hub"
-            description="Tours, comparisons, and buying tips — everything you need to navigate Colorado new construction, organized and on demand."
+            description="Tours, comparisons, and buying tips \u2014 everything you need to navigate Colorado new construction, organized and on demand."
           />
         </div>
       </section>
 
       {/* Filters and content */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+      <section className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-12">
         {/* Category pills */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2.5 mb-7">
           {categories.map((cat) => (
             <button
               key={cat.value}
               onClick={() => setActiveCategory(cat.value)}
               className={cn(
-                "px-4 py-2 text-sm font-medium rounded-full transition-colors",
+                "px-5 py-2.5 text-[13px] font-medium rounded-full transition-all duration-150",
                 activeCategory === cat.value
                   ? "bg-brand-600 text-white shadow-sm"
-                  : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300"
+                  : "bg-white text-gray-500 border border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700"
               )}
             >
               {cat.label}
@@ -77,30 +77,30 @@ export default function VideosPage() {
               onChange: setSelectedArea,
             },
           ]}
-          className="mb-8"
+          className="mb-10"
         />
 
         {/* Results count */}
-        <p className="text-sm text-gray-500 mb-6">
+        <p className="text-[14px] text-gray-500 mb-8">
           {filteredVideos.length} {filteredVideos.length === 1 ? "video" : "videos"}
         </p>
 
         {/* Video grid */}
         {filteredVideos.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {filteredVideos.map((video) => (
               <VideoCard key={video.id} video={video} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-20">
-            <p className="text-gray-400 text-lg">No videos match your filters.</p>
+          <div className="text-center py-24">
+            <p className="text-gray-400 text-[16px]">No videos match your filters.</p>
             <button
               onClick={() => {
                 setActiveCategory("");
                 setSelectedArea("");
               }}
-              className="mt-4 text-brand-600 hover:text-brand-700 font-medium text-sm transition-colors"
+              className="mt-5 text-brand-600 hover:text-brand-700 font-medium text-[14px] transition-colors duration-150"
             >
               Clear all filters
             </button>
@@ -109,11 +109,11 @@ export default function VideosPage() {
       </section>
 
       {/* YouTube CTA */}
-      <section className="bg-white border-t border-gray-100">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 text-center">
+      <section className="bg-white border-t border-gray-100/80">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-20 text-center">
           <div className="mx-auto max-w-xl">
             <svg
-              className="mx-auto mb-5 w-12 h-12 text-red-600"
+              className="mx-auto mb-6 w-12 h-12 text-red-600"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -122,7 +122,7 @@ export default function VideosPage() {
             <h3 className="text-2xl font-bold text-gray-900 mb-3">
               Subscribe for new videos every week
             </h3>
-            <p className="text-gray-500 mb-6 leading-relaxed">
+            <p className="text-[15px] text-gray-500 mb-8 leading-relaxed">
               Get notified when we publish community tours, builder comparisons, and market
               updates for Colorado new construction.
             </p>
@@ -130,7 +130,7 @@ export default function VideosPage() {
               href="https://www.youtube.com/@coloradonewbuildnavigator"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-full transition-colors shadow-sm"
+              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3.5 rounded-full transition-all duration-150 shadow-sm hover:shadow-md hover:-translate-y-[1px]"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.546 12 3.546 12 3.546s-7.505 0-9.377.504A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.504 9.376.504 9.376.504s7.505 0 9.377-.504a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />

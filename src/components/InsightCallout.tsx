@@ -9,18 +9,18 @@ interface InsightCalloutProps {
 
 const variants = {
   tip: {
-    bg: "bg-brand-50 border-brand-200",
-    icon: "text-brand-600",
-    title: "text-brand-800",
+    bg: "bg-purple-50/60 border-purple-100",
+    icon: "text-purple-500",
+    title: "text-purple-700",
   },
   warning: {
-    bg: "bg-amber-50 border-amber-200",
-    icon: "text-amber-600",
-    title: "text-amber-800",
+    bg: "bg-orange-50/60 border-orange-100",
+    icon: "text-orange-500",
+    title: "text-orange-700",
   },
   info: {
-    bg: "bg-gray-50 border-gray-200",
-    icon: "text-gray-600",
+    bg: "bg-gray-50 border-gray-150",
+    icon: "text-gray-500",
     title: "text-gray-800",
   },
 };
@@ -64,14 +64,14 @@ export function InsightCallout({
   const style = variants[variant];
 
   return (
-    <div className={cn("rounded-xl border p-5", style.bg, className)}>
-      <div className="flex gap-3">
+    <div className={cn("rounded-[16px] border p-6", style.bg, className)}>
+      <div className="flex gap-4">
         <div className={cn("shrink-0 mt-0.5", style.icon)}>{icons[variant]}</div>
         <div>
           {title && (
-            <h4 className={cn("text-sm font-semibold mb-1", style.title)}>{title}</h4>
+            <h4 className={cn("text-sm font-semibold mb-1.5", style.title)}>{title}</h4>
           )}
-          <div className="text-sm text-gray-700 leading-relaxed">{children}</div>
+          <div className="text-[14px] text-gray-600 leading-[1.6]">{children}</div>
         </div>
       </div>
     </div>

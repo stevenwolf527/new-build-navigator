@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Notion-inspired palette — calm neutrals + true blue CTA */
+  /* ── Semantic color system ───────────────────────────────────────── */
+  /* Notion-inspired neutrals + multi-color accents for meaning       */
 
-  /* Brand blue (primary CTA, links, active states) */
+  /* Blue — primary CTA, links, active states */
   --color-brand-50: #EAF3FF;
   --color-brand-100: #d0e4ff;
   --color-brand-200: #a8ccff;
@@ -15,30 +16,68 @@
   --color-brand-800: #094da0;
   --color-brand-900: #073d7e;
 
-  /* Warm accent (secondary highlights) */
+  /* Green — success, active status, positive signals, pros */
+  --color-green-50: #EAF7F5;
+  --color-green-100: #d1eeea;
+  --color-green-500: #0F7B6C;
+  --color-green-600: #0a6359;
+  --color-green-700: #085249;
+
+  /* Orange — tips, guidance, warm highlights */
+  --color-orange-50: #FFF3E6;
+  --color-orange-100: #ffe4c4;
+  --color-orange-500: #D9730D;
+  --color-orange-600: #c2660b;
+  --color-orange-700: #a85709;
+
+  /* Yellow — featured, warm accents, attention */
+  --color-yellow-50: #FBF5E8;
+  --color-yellow-100: #f5e8c8;
+  --color-yellow-500: #CB912F;
+  --color-yellow-600: #b37e25;
+  --color-yellow-700: #9a6c1e;
+
+  /* Purple — insights, premium, special */
+  --color-purple-50: #F3F0FF;
+  --color-purple-100: #e4deff;
+  --color-purple-500: #6940A5;
+  --color-purple-600: #5a3591;
+  --color-purple-700: #4c2c7d;
+
+  /* Red — errors, warnings, cons, caution */
+  --color-red-50: #FCEDEC;
+  --color-red-100: #f8d6d4;
+  --color-red-500: #D44C47;
+  --color-red-600: #b93a36;
+  --color-red-700: #9e302d;
+
+  /* Legacy aliases for backward compat */
   --color-accent-50: #FBF5E8;
-  --color-accent-100: #f5e8c8;
-  --color-accent-200: #ecd89e;
-  --color-accent-300: #e0c473;
-  --color-accent-400: #CB912F;
   --color-accent-500: #CB912F;
   --color-accent-600: #b37e25;
-
-  /* State colors */
   --color-warm-50: #FBF5E8;
-  --color-warm-100: #f5e8c8;
   --color-warm-500: #CB912F;
-  --color-warm-600: #b37e25;
-
   --color-success-50: #EAF7F5;
   --color-success-500: #0F7B6C;
-  --color-success-600: #0a6359;
-
   --color-error-50: #FCEDEC;
   --color-error-500: #D44C47;
-  --color-error-600: #b93a36;
 
   --font-sans: var(--font-manrope), system-ui, -apple-system, sans-serif;
+
+  /* ── Elevation system ────────────────────────────────────────────── */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.10), 0 8px 16px rgba(0, 0, 0, 0.04);
+
+  /* ── Border radii ────────────────────────────────────────────────── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
 }
 
 :root {

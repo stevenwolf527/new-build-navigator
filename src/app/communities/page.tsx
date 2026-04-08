@@ -35,8 +35,8 @@ export default function CommunitiesPage() {
   return (
     <>
       {/* Page header */}
-      <section className="bg-gradient-to-b from-brand-50/60 to-white pt-16 pb-8 lg:pt-24 lg:pb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-b from-gray-50/60 to-white pt-20 pb-10 lg:pt-28 lg:pb-14">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Communities"
             title="Explore New Build Communities"
@@ -46,10 +46,10 @@ export default function CommunitiesPage() {
       </section>
 
       {/* Filters and grid */}
-      <section className="bg-white pb-16 lg:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-white pb-20 lg:pb-28">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           {/* Sticky filter bar */}
-          <div className="sticky top-0 z-10 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 py-4 bg-white/80 backdrop-blur-lg border-b border-gray-100/80">
+          <div className="sticky top-[68px] z-10 -mx-5 px-5 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 py-4 bg-white/90 backdrop-blur-xl border-b border-gray-100/60">
             <FilterBar
               filters={[
                 {
@@ -81,8 +81,8 @@ export default function CommunitiesPage() {
           </div>
 
           {/* Results count */}
-          <div className="mt-8 mb-6 flex items-center justify-between">
-            <p className="text-sm text-gray-500">
+          <div className="mt-10 mb-8 flex items-center justify-between">
+            <p className="text-[14px] text-gray-500">
               Showing{" "}
               <span className="font-semibold text-gray-900">{filteredCommunities.length}</span>{" "}
               {filteredCommunities.length === 1 ? "community" : "communities"}
@@ -94,14 +94,14 @@ export default function CommunitiesPage() {
 
           {/* Community grid */}
           {filteredCommunities.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8">
               {filteredCommunities.map((community) => (
                 <CommunityCard key={community.id} community={community} />
               ))}
             </div>
           ) : (
-            <div className="text-center py-20">
-              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="text-center py-24">
+              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-5">
                 <svg
                   className="w-7 h-7 text-gray-400"
                   fill="none"
@@ -117,7 +117,7 @@ export default function CommunitiesPage() {
                 </svg>
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">No communities found</h3>
-              <p className="text-sm text-gray-500 max-w-md mx-auto mb-6">
+              <p className="text-[14px] text-gray-500 max-w-md mx-auto mb-7">
                 No communities match your current filters. Try adjusting your selections or clear all filters to see everything.
               </p>
               <button
@@ -126,7 +126,7 @@ export default function CommunitiesPage() {
                   setBuilderFilter("");
                   setStatusFilter("");
                 }}
-                className="inline-flex items-center px-5 py-2.5 text-sm font-semibold text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 rounded-full transition-colors"
+                className="inline-flex items-center px-5 py-2.5 text-[14px] font-semibold text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 rounded-full transition-all duration-150"
               >
                 Clear All Filters
               </button>

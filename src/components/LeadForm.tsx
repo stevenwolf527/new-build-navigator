@@ -10,9 +10,9 @@ interface LeadFormProps {
 }
 
 const timelineOptions = [
-  { value: "0-3-months", label: "0–3 months" },
-  { value: "3-6-months", label: "3–6 months" },
-  { value: "6-12-months", label: "6–12 months" },
+  { value: "0-3-months", label: "0\u20133 months" },
+  { value: "3-6-months", label: "3\u20136 months" },
+  { value: "6-12-months", label: "6\u201312 months" },
   { value: "12-plus-months", label: "12+ months" },
 ];
 
@@ -28,10 +28,10 @@ const areaOptions = [
 
 const budgetOptions = [
   "Under $400K",
-  "$400K–$500K",
-  "$500K–$650K",
-  "$650K–$800K",
-  "$800K–$1M",
+  "$400K\u2013$500K",
+  "$500K\u2013$650K",
+  "$650K\u2013$800K",
+  "$800K\u2013$1M",
   "$1M+",
 ];
 
@@ -45,14 +45,14 @@ export function LeadForm({ source = "website", compact = false, className }: Lea
 
   if (submitted) {
     return (
-      <div className={cn("bg-green-50 rounded-2xl p-8 text-center", className)}>
-        <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg className="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <div className={cn("bg-emerald-50/60 rounded-[20px] p-10 text-center", className)}>
+        <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-5">
+          <svg className="w-8 h-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
         <h3 className="text-xl font-semibold text-gray-900 mb-2">You&apos;re on the list!</h3>
-        <p className="text-gray-600">
+        <p className="text-[15px] text-gray-500 leading-relaxed max-w-sm mx-auto">
           We&apos;ll send you a curated list of new builds that match your criteria. Expect to hear from us within 24 hours.
         </p>
       </div>
@@ -60,15 +60,15 @@ export function LeadForm({ source = "website", compact = false, className }: Lea
   }
 
   const inputClasses =
-    "w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-shadow";
+    "w-full px-4 py-3 bg-white border border-gray-200 rounded-[12px] text-[14px] text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-400 transition-all duration-150";
 
   return (
-    <form onSubmit={handleSubmit} className={cn("space-y-4", className)}>
+    <form onSubmit={handleSubmit} className={cn("space-y-5", className)}>
       <input type="hidden" name="source" value={source} />
 
-      <div className={cn(compact ? "space-y-4" : "grid grid-cols-1 sm:grid-cols-2 gap-4")}>
+      <div className={cn(compact ? "space-y-5" : "grid grid-cols-1 sm:grid-cols-2 gap-5")}>
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="name" className="block text-[13px] font-medium text-gray-600 mb-2">
             Full Name
           </label>
           <input
@@ -81,7 +81,7 @@ export function LeadForm({ source = "website", compact = false, className }: Lea
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="email" className="block text-[13px] font-medium text-gray-600 mb-2">
             Email
           </label>
           <input
@@ -94,7 +94,7 @@ export function LeadForm({ source = "website", compact = false, className }: Lea
           />
         </div>
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="phone" className="block text-[13px] font-medium text-gray-600 mb-2">
             Phone
           </label>
           <input
@@ -106,7 +106,7 @@ export function LeadForm({ source = "website", compact = false, className }: Lea
           />
         </div>
         <div>
-          <label htmlFor="area" className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="area" className="block text-[13px] font-medium text-gray-600 mb-2">
             Target Area
           </label>
           <select id="area" name="area" className={inputClasses}>
@@ -119,7 +119,7 @@ export function LeadForm({ source = "website", compact = false, className }: Lea
           </select>
         </div>
         <div>
-          <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="budget" className="block text-[13px] font-medium text-gray-600 mb-2">
             Budget Range
           </label>
           <select id="budget" name="budget" className={inputClasses}>
@@ -132,7 +132,7 @@ export function LeadForm({ source = "website", compact = false, className }: Lea
           </select>
         </div>
         <div>
-          <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="timeline" className="block text-[13px] font-medium text-gray-600 mb-2">
             Buying Timeline
           </label>
           <select id="timeline" name="timeline" className={inputClasses}>
@@ -148,14 +148,14 @@ export function LeadForm({ source = "website", compact = false, className }: Lea
 
       {!compact && (
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="message" className="block text-[13px] font-medium text-gray-600 mb-2">
             Anything else we should know?
           </label>
           <textarea
             id="message"
             name="message"
             rows={3}
-            placeholder="Tell us about what you're looking for — builders you like, must-haves, questions..."
+            placeholder="Tell us about what you're looking for \u2014 builders you like, must-haves, questions..."
             className={cn(inputClasses, "resize-none")}
           />
         </div>
@@ -163,11 +163,11 @@ export function LeadForm({ source = "website", compact = false, className }: Lea
 
       <button
         type="submit"
-        className="w-full px-6 py-3.5 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-sm"
+        className="w-full px-6 py-3.5 bg-brand-600 hover:bg-brand-700 text-white text-[14px] font-semibold rounded-[12px] transition-all duration-150 shadow-sm hover:shadow-md hover:-translate-y-[1px]"
       >
         Get My Curated New Build List
       </button>
-      <p className="text-xs text-gray-400 text-center">
+      <p className="text-[12px] text-gray-400 text-center">
         No spam. No obligation. Just helpful new build guidance.
       </p>
     </form>

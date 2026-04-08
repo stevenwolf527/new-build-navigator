@@ -24,14 +24,14 @@ const footerLinks = {
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-9 h-9 bg-brand-500 rounded-[10px] flex items-center justify-center">
                 <svg
-                  className="w-5 h-5 text-white"
+                  className="w-[18px] h-[18px] text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -44,9 +44,9 @@ export function Footer() {
                   />
                 </svg>
               </div>
-              <span className="text-base font-semibold text-white">CO New Build Navigator</span>
+              <span className="text-[15px] font-semibold text-white">CO New Build Navigator</span>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed mb-5">
+            <p className="text-[14px] text-gray-400 leading-[1.6] mb-6">
               Helping Colorado buyers find the best new construction homes without overpaying. Local expertise, builder
               insights, and honest guidance.
             </p>
@@ -54,7 +54,7 @@ export function Footer() {
               href="https://www.youtube.com/@coloradonewbuildnavigator"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-[13px] text-gray-400 hover:text-white transition-colors duration-150"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -65,11 +65,11 @@ export function Footer() {
 
           {/* Explore */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Explore</h3>
-            <ul className="space-y-2.5">
+            <h3 className="text-[12px] font-semibold text-white uppercase tracking-widest mb-5">Explore</h3>
+            <ul className="space-y-3">
               {footerLinks.explore.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                  <Link href={link.href} className="text-[14px] text-gray-400 hover:text-white transition-colors duration-150">
                     {link.label}
                   </Link>
                 </li>
@@ -79,11 +79,11 @@ export function Footer() {
 
           {/* Areas */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Areas</h3>
-            <ul className="space-y-2.5">
+            <h3 className="text-[12px] font-semibold text-white uppercase tracking-widest mb-5">Areas</h3>
+            <ul className="space-y-3">
               {footerLinks.areas.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                  <Link href={link.href} className="text-[14px] text-gray-400 hover:text-white transition-colors duration-150">
                     {link.label}
                   </Link>
                 </li>
@@ -93,11 +93,11 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Resources</h3>
-            <ul className="space-y-2.5">
+            <h3 className="text-[12px] font-semibold text-white uppercase tracking-widest mb-5">Resources</h3>
+            <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                  <Link href={link.href} className="text-[14px] text-gray-400 hover:text-white transition-colors duration-150">
                     {link.label}
                   </Link>
                 </li>
@@ -106,11 +106,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-500">
+        <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-[12px] text-gray-500">
             &copy; {new Date().getFullYear()} Colorado New Build Navigator. All rights reserved.
           </p>
-          <p className="text-xs text-gray-500">
+          <p className="text-[12px] text-gray-500">
             Not affiliated with any builder. Independent guidance for Colorado buyers.
           </p>
         </div>

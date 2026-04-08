@@ -18,9 +18,9 @@ const builders = getUniqueBuilders();
 const priceRanges = [
   { value: "", label: "Any Price" },
   { value: "0-500000", label: "Under $500K" },
-  { value: "500000-650000", label: "$500K – $650K" },
-  { value: "650000-800000", label: "$650K – $800K" },
-  { value: "800000-1000000", label: "$800K – $1M" },
+  { value: "500000-650000", label: "$500K \u2013 $650K" },
+  { value: "650000-800000", label: "$650K \u2013 $800K" },
+  { value: "800000-1000000", label: "$800K \u2013 $1M" },
   { value: "1000000-999999999", label: "$1M+" },
 ];
 
@@ -100,10 +100,10 @@ export default function ListingsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50/40">
       {/* Hero header */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <section className="bg-white border-b border-gray-100/80">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-20 sm:py-24">
           <SectionHeader
             eyebrow="Browse Homes"
             title="New Construction Listings"
@@ -116,8 +116,8 @@ export default function ListingsPage() {
       </section>
 
       {/* Results */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <p className="text-sm text-gray-500 mb-6">
+      <section className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-14">
+        <p className="text-[14px] text-gray-500 mb-8">
           Showing{" "}
           <span className="font-semibold text-gray-900">
             {filteredListings.length}
@@ -126,13 +126,13 @@ export default function ListingsPage() {
         </p>
 
         {filteredListings.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {filteredListings.map((listing) => (
               <ListingCard key={listing.id} listing={listing} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-20">
+          <div className="text-center py-24">
             <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-5">
               <svg
                 className="w-8 h-8 text-gray-400"
@@ -151,7 +151,7 @@ export default function ListingsPage() {
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               No homes match your filters
             </h3>
-            <p className="text-gray-500 max-w-md mx-auto mb-6">
+            <p className="text-[14px] text-gray-500 max-w-md mx-auto mb-7">
               Try adjusting your search criteria or clear all filters to see
               every available listing.
             </p>
@@ -163,7 +163,7 @@ export default function ListingsPage() {
                 setBeds("");
                 setStatus("");
               }}
-              className="inline-flex items-center px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold rounded-xl transition-colors"
+              className="inline-flex items-center px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-[14px] font-semibold rounded-[12px] transition-all duration-150 hover:shadow-md"
             >
               Clear all filters
             </button>
@@ -172,12 +172,12 @@ export default function ListingsPage() {
       </section>
 
       {/* CTA / Lead Form */}
-      <section className="bg-white border-t border-gray-100">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <section className="bg-white border-t border-gray-100/80">
+        <div className="mx-auto max-w-3xl px-5 sm:px-6 lg:px-8 py-20 sm:py-24">
           <SectionHeader
             eyebrow="Get Personalized Help"
             title="Not finding what you need?"
-            description="Tell us what you're looking for and we'll send you a curated list of new builds that match your criteria — including off-market opportunities."
+            description="Tell us what you're looking for and we'll send you a curated list of new builds that match your criteria \u2014 including off-market opportunities."
             align="center"
           />
           <LeadForm source="listings-page" className="max-w-xl mx-auto" />

@@ -21,7 +21,7 @@ export function FilterBar({ filters, className }: FilterBarProps) {
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-3 p-4 bg-white rounded-2xl border border-gray-100 shadow-sm",
+        "flex flex-wrap items-center gap-3 p-5 bg-white rounded-[16px] border border-gray-100 shadow-sm",
         className
       )}
     >
@@ -30,7 +30,7 @@ export function FilterBar({ filters, className }: FilterBarProps) {
           <select
             value={filter.value}
             onChange={(e) => filter.onChange(e.target.value)}
-            className="appearance-none bg-gray-50 hover:bg-gray-100 border border-gray-200 text-sm text-gray-700 font-medium rounded-xl px-4 py-2.5 pr-9 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
+            className="appearance-none bg-gray-50/80 hover:bg-gray-100/80 border border-gray-200 text-[13px] text-gray-600 font-medium rounded-[10px] px-4 py-2.5 pr-9 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-400 focus:shadow-sm transition-all duration-150"
           >
             {filter.options.map((opt) => (
               <option key={opt.value} value={opt.value}>
@@ -52,7 +52,7 @@ export function FilterBar({ filters, className }: FilterBarProps) {
       {filters.some((f) => f.value !== "") && (
         <button
           onClick={() => filters.forEach((f) => f.onChange(""))}
-          className="text-sm text-gray-500 hover:text-gray-700 font-medium px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors"
+          className="text-[13px] text-gray-400 hover:text-gray-600 font-medium px-3 py-2.5 rounded-[10px] hover:bg-gray-50 transition-all duration-150"
         >
           Clear filters
         </button>

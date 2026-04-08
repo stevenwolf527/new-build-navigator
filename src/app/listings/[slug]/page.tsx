@@ -34,10 +34,10 @@ const statusLabels: Record<string, string> = {
   "pre-construction": "Pre-Construction",
 };
 
-const statusVariants: Record<string, "success" | "warning" | "brand" | "default"> = {
-  available: "success",
-  "under-contract": "warning",
-  "move-in-ready": "brand",
+const statusVariants: Record<string, "green" | "orange" | "blue" | "default" | "yellow" | "purple" | "red"> = {
+  available: "green",
+  "under-contract": "orange",
+  "move-in-ready": "blue",
   "pre-construction": "default",
 };
 
@@ -57,10 +57,10 @@ export default async function ListingDetailPage({
   return (
     <>
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <nav className="flex items-center gap-2 text-sm text-gray-500">
-            <Link href="/listings" className="hover:text-brand-600 transition-colors">
+      <div className="bg-white border-b border-gray-100/80">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-3.5">
+          <nav className="flex items-center gap-2 text-[13px] text-gray-500">
+            <Link href="/listings" className="hover:text-brand-600 transition-colors duration-150">
               Listings
             </Link>
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -73,8 +73,8 @@ export default async function ListingDetailPage({
 
       {/* Hero image */}
       <section className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 rounded-2xl overflow-hidden">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 rounded-[20px] overflow-hidden">
             <div className="relative aspect-[4/3]">
               <Image
                 src={listing.images[0]}
@@ -101,9 +101,9 @@ export default async function ListingDetailPage({
       </section>
 
       {/* Details */}
-      <section className="bg-white py-8 lg:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-10 lg:gap-16">
+      <section className="bg-white py-10 lg:py-14">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Main content */}
             <div className="lg:col-span-2">
               <div className="flex items-start justify-between gap-4 mb-2">
@@ -114,22 +114,22 @@ export default async function ListingDetailPage({
                 </div>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mt-3">
+              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mt-4">
                 {listing.address}
               </h1>
-              <p className="text-lg text-gray-500 mt-1">
+              <p className="text-[17px] text-gray-500 mt-1.5">
                 {listing.communityName} &middot; {listing.city}, CO
               </p>
 
-              <div className="mt-6 flex items-baseline gap-3">
-                <span className="text-3xl font-bold text-gray-900">{formatPrice(listing.price)}</span>
+              <div className="mt-7 flex items-baseline gap-3">
+                <span className="text-[32px] font-bold text-gray-900">{formatPrice(listing.price)}</span>
                 {listing.modelName && (
-                  <span className="text-sm text-gray-400">{listing.modelName}</span>
+                  <span className="text-[14px] text-gray-400">{listing.modelName}</span>
                 )}
               </div>
 
               {/* Quick stats */}
-              <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {[
                   { label: "Bedrooms", value: listing.beds },
                   { label: "Bathrooms", value: listing.baths },
@@ -138,31 +138,31 @@ export default async function ListingDetailPage({
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="bg-gray-50 rounded-xl p-4 text-center"
+                    className="bg-gray-50/80 rounded-[14px] p-5 text-center"
                   >
-                    <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                    <p className="text-xs text-gray-500 mt-1">{stat.label}</p>
+                    <p className="text-[24px] font-bold text-gray-900">{stat.value}</p>
+                    <p className="text-[12px] text-gray-400 mt-1.5">{stat.label}</p>
                   </div>
                 ))}
               </div>
 
               {/* Details grid */}
-              <div className="mt-8 grid grid-cols-2 gap-y-4 gap-x-8 py-6 border-t border-gray-100">
+              <div className="mt-10 grid grid-cols-2 gap-y-5 gap-x-8 py-7 border-t border-gray-100/80">
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider">Builder</p>
-                  <p className="text-sm font-medium text-gray-900 mt-0.5">{listing.builder}</p>
+                  <p className="text-[11px] text-gray-400 uppercase tracking-wider font-medium">Builder</p>
+                  <p className="text-[14px] font-medium text-gray-900 mt-1">{listing.builder}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider">Lot Size</p>
-                  <p className="text-sm font-medium text-gray-900 mt-0.5">{listing.lotSize}</p>
+                  <p className="text-[11px] text-gray-400 uppercase tracking-wider font-medium">Lot Size</p>
+                  <p className="text-[14px] font-medium text-gray-900 mt-1">{listing.lotSize}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider">Garage</p>
-                  <p className="text-sm font-medium text-gray-900 mt-0.5">{listing.garage}</p>
+                  <p className="text-[11px] text-gray-400 uppercase tracking-wider font-medium">Garage</p>
+                  <p className="text-[14px] font-medium text-gray-900 mt-1">{listing.garage}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider">Est. Completion</p>
-                  <p className="text-sm font-medium text-gray-900 mt-0.5">
+                  <p className="text-[11px] text-gray-400 uppercase tracking-wider font-medium">Est. Completion</p>
+                  <p className="text-[14px] font-medium text-gray-900 mt-1">
                     {new Date(listing.completionDate).toLocaleDateString("en-US", {
                       month: "long",
                       year: "numeric",
@@ -173,7 +173,7 @@ export default async function ListingDetailPage({
 
               {/* Insight */}
               {listing.shortNote && (
-                <div className="mt-6">
+                <div className="mt-8">
                   <InsightCallout title="Navigator Insight" variant="tip">
                     {listing.shortNote}
                   </InsightCallout>
@@ -182,26 +182,26 @@ export default async function ListingDetailPage({
 
               {/* Community link */}
               {community && (
-                <div className="mt-8 p-5 bg-gray-50 rounded-xl">
-                  <p className="text-sm text-gray-500 mb-2">Part of</p>
+                <div className="mt-10 p-6 bg-gray-50/80 rounded-[16px]">
+                  <p className="text-[13px] text-gray-400 mb-2">Part of</p>
                   <Link
                     href={`/communities/${community.slug}`}
-                    className="text-lg font-semibold text-brand-600 hover:text-brand-700 transition-colors"
+                    className="text-[17px] font-semibold text-brand-600 hover:text-brand-700 transition-colors duration-150"
                   >
                     {community.name} Community &rarr;
                   </Link>
-                  <p className="text-sm text-gray-500 mt-1">{community.shortDescription}</p>
+                  <p className="text-[14px] text-gray-500 mt-1.5">{community.shortDescription}</p>
                 </div>
               )}
             </div>
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24 bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <div className="sticky top-24 bg-white rounded-[20px] border border-gray-200 shadow-sm p-7">
+                <h3 className="text-[17px] font-semibold text-gray-900 mb-2">
                   Interested in this home?
                 </h3>
-                <p className="text-sm text-gray-500 mb-5">
+                <p className="text-[14px] text-gray-500 mb-6">
                   Get insider details, negotiate better incentives, and tour with confidence.
                 </p>
                 <LeadForm source={`listing-${listing.slug}`} compact />

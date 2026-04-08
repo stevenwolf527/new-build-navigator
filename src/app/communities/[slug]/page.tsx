@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { communities, getCommunityBySlug } from "@/data/communities";
 import { getListingsByCommunity } from "@/data/listings";
-import { formatPrice, formatPriceRange, getYouTubeEmbedUrl } from "@/lib/utils";
+import { formatPrice, formatPriceRange, getYouTubeEmbedUrl, FALLBACK_IMAGE } from "@/lib/utils";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ListingCard } from "@/components/ListingCard";
 import { CommunityCard } from "@/components/CommunityCard";
@@ -69,7 +69,7 @@ export default async function CommunityDetailPage({ params }: PageProps) {
       <section className="relative bg-gray-900">
         <div className="relative h-[340px] sm:h-[440px] lg:h-[500px]">
           <Image
-            src={community.images[0]}
+            src={community.images?.[0] || FALLBACK_IMAGE}
             alt={community.name}
             fill
             className="object-cover opacity-70"
@@ -207,7 +207,8 @@ export default async function CommunityDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Our Insights */}
+      {/* Our Insights — only show when there's editorial content */}
+      {(community.pros.length > 0 || community.cons.length > 0 || community.notes.length > 0) && (
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
@@ -231,6 +232,7 @@ export default async function CommunityDetailPage({ params }: PageProps) {
             </div>
 
             {/* Pros */}
+            {community.pros.length > 0 && (
             <div className="mb-8">
               <h3 className="text-[17px] font-semibold text-gray-900 mb-5 flex items-center gap-3">
                 <span className="w-9 h-9 bg-emerald-50 rounded-[10px] flex items-center justify-center">
@@ -258,8 +260,10 @@ export default async function CommunityDetailPage({ params }: PageProps) {
                 ))}
               </div>
             </div>
+            )}
 
             {/* Cons */}
+            {community.cons.length > 0 && (
             <div className="mb-8">
               <h3 className="text-[17px] font-semibold text-gray-900 mb-5 flex items-center gap-3">
                 <span className="w-9 h-9 bg-amber-50 rounded-[10px] flex items-center justify-center">
@@ -283,8 +287,10 @@ export default async function CommunityDetailPage({ params }: PageProps) {
                 ))}
               </div>
             </div>
+            )}
 
             {/* Insider notes */}
+            {community.notes.length > 0 && (
             <div>
               <h3 className="text-[17px] font-semibold text-gray-900 mb-5 flex items-center gap-3">
                 <span className="w-9 h-9 bg-purple-50 rounded-[10px] flex items-center justify-center">
@@ -306,9 +312,11 @@ export default async function CommunityDetailPage({ params }: PageProps) {
                 ))}
               </div>
             </div>
+            )}
           </div>
         </div>
       </section>
+      )}
 
       {/* Video tour */}
       {community.featuredVideo && (

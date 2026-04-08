@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -19,22 +20,14 @@ export function Navbar() {
       <nav className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[68px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0 group">
-            <div className="w-9 h-9 bg-brand-600 rounded-[10px] flex items-center justify-center shadow-sm transition-transform duration-150 group-hover:scale-105">
-              <svg
-                className="w-[18px] h-[18px] text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1m-2 0h2"
-                />
-              </svg>
-            </div>
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+            <Image
+              src="/logo.svg"
+              alt="CO New Build Navigator"
+              width={36}
+              height={36}
+              className="transition-transform duration-150 group-hover:scale-105"
+            />
             <div className="hidden sm:block">
               <span className="text-[15px] font-semibold text-gray-900 tracking-tight">
                 CO New Build Navigator

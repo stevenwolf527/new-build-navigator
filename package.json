@@ -10,7 +10,8 @@
     "pipeline": "tsx src/pipeline/cli.ts",
     "pipeline:dry": "tsx src/pipeline/cli.ts --dry-run",
     "pipeline:sync": "tsx scripts/sync-communities.ts",
-    "pipeline:refresh": "tsx src/pipeline/cli.ts && tsx scripts/sync-communities.ts"
+    "pipeline:refresh": "tsx src/pipeline/cli.ts && tsx scripts/sync-communities.ts",
+    "ingest:communities": "tsx scripts/sync-communities.ts && next build"
   },
   "dependencies": {
     "next": "16.2.2",

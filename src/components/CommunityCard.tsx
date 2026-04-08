@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Community } from "@/types";
-import { formatPriceRange } from "@/lib/utils";
+import { formatPriceRange, FALLBACK_IMAGE } from "@/lib/utils";
 import { Badge } from "./Badge";
 
 interface CommunityCardProps {
@@ -16,7 +16,7 @@ export function CommunityCard({ community }: CommunityCardProps) {
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
-          src={community.images[0]}
+          src={community.images?.[0] || FALLBACK_IMAGE}
           alt={community.name}
           fill
           className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"

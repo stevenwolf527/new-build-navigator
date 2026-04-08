@@ -10,28 +10,28 @@ export class ExportService {
   }
 
   async exportCommunities(records: CommunityRecord[]): Promise<void> {
-    const dir = join(this.outputDir, "data", "final");
+    const dir = join(this.outputDir, "final");
     await this.ensureDir(dir);
     await this.writeJson(join(dir, "communities.json"), records);
     logger.info("export", `Exported ${records.length} communities`);
   }
 
   async exportForReview(records: CommunityRecord[]): Promise<void> {
-    const dir = join(this.outputDir, "data", "review");
+    const dir = join(this.outputDir, "review");
     await this.ensureDir(dir);
     await this.writeJson(join(dir, "needs_review.json"), records);
     logger.info("export", `Exported ${records.length} records for review`);
   }
 
   async exportRaw(records: RawCommunityRecord[]): Promise<void> {
-    const dir = join(this.outputDir, "data", "raw");
+    const dir = join(this.outputDir, "raw");
     await this.ensureDir(dir);
     await this.writeJson(join(dir, "raw_records.json"), records);
     logger.info("export", `Exported ${records.length} raw records`);
   }
 
   async exportSummary(result: PipelineResult): Promise<void> {
-    const dir = join(this.outputDir, "data", "final");
+    const dir = join(this.outputDir, "final");
     await this.ensureDir(dir);
 
     const summary = {
@@ -53,7 +53,7 @@ export class ExportService {
   }
 
   async exportReviewCsv(records: CommunityRecord[]): Promise<void> {
-    const dir = join(this.outputDir, "data", "review");
+    const dir = join(this.outputDir, "review");
     await this.ensureDir(dir);
 
     const headers = [

@@ -11,6 +11,12 @@ import { DedupeService } from "./dedupe/dedupe.service";
 import { ExportService } from "./export/export.service";
 import { builderSeeds } from "./config/builders.seed";
 import { logger } from "./utils/logger";
+import { fetchPage } from "./utils/http";
+import {
+  launchBrowser,
+  closeBrowser,
+  fetchPageWithBrowser,
+} from "./utils/browser";
 import {
   CommunityRecord,
   RawCommunityRecord,
@@ -81,10 +87,48 @@ export class Pipeline {
     logger.info("pipeline", "Step 2: Parsing candidate pages");
 
     const rawRecords: RawCommunityRecord[] = [];
+    const MIN_HTML_LENGTH = 2000; // Below this, content is likely a JS shell
+    let browserLaunched = false;
+    let browserFetchCount = 0;
 
     for (const result of discoveryResults) {
       try {
-        const parseResult = await this.parser.parse(result.url, "");
+        // Try plain fetch first (fast, no browser overhead)
+        let html: string | null = null;
+        const pageResponse = await fetchPage(result.url);
+
+        if (pageResponse && pageResponse.html.length >= MIN_HTML_LENGTH) {
+          html = pageResponse.html;
+        } else {
+          // Plain fetch returned empty/short HTML — try browser rendering
+          if (!browserLaunched) {
+            await launchBrowser();
+            browserLaunched = true;
+          }
+
+          const shortReason = pageResponse
+            ? `HTML too short (${pageResponse.html.length} chars)`
+            : "fetch failed";
+          logger.info(
+            "pipeline",
+            `Browser fallback for ${result.url} (${shortReason})`
+          );
+
+          const browserResponse = await fetchPageWithBrowser(result.url);
+          if (browserResponse && browserResponse.html.length >= MIN_HTML_LENGTH) {
+            html = browserResponse.html;
+            browserFetchCount++;
+          } else {
+            const len = browserResponse?.html.length ?? 0;
+            logger.warn(
+              "pipeline",
+              `Skipping ${result.url}: even browser rendering returned insufficient content (${len} chars)`
+            );
+            continue;
+          }
+        }
+
+        const parseResult = await this.parser.parse(result.url, html);
         if (parseResult.success && parseResult.record) {
           rawRecords.push(parseResult.record);
         }
@@ -99,6 +143,14 @@ export class Pipeline {
         errors.push(`Parse error for ${result.url}: ${msg}`);
         logger.error("pipeline", `Parse error for ${result.url}`, msg);
       }
+    }
+
+    if (browserLaunched) {
+      await closeBrowser();
+      logger.info(
+        "pipeline",
+        `Browser rendered ${browserFetchCount} pages`
+      );
     }
 
     logger.info("pipeline", `Parsed ${rawRecords.length} raw records`);

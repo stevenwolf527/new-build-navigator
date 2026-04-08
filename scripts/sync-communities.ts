@@ -308,8 +308,7 @@ function main() {
   console.log("Sync: reading pipeline output from", PIPELINE_INPUT);
 
   if (!fs.existsSync(PIPELINE_INPUT)) {
-    console.log("Sync: no pipeline output found, writing empty array");
-    fs.writeFileSync(FRONTEND_OUTPUT, "[]", "utf-8");
+    console.log("Sync: no pipeline output found — preserving existing frontend data");
     return;
   }
 
@@ -319,14 +318,12 @@ function main() {
   try {
     records = JSON.parse(raw);
   } catch {
-    console.error("Sync: failed to parse pipeline JSON");
-    fs.writeFileSync(FRONTEND_OUTPUT, "[]", "utf-8");
+    console.error("Sync: failed to parse pipeline JSON — preserving existing frontend data");
     return;
   }
 
   if (!Array.isArray(records) || records.length === 0) {
-    console.log("Sync: pipeline output is empty");
-    fs.writeFileSync(FRONTEND_OUTPUT, "[]", "utf-8");
+    console.log("Sync: pipeline output is empty — preserving existing frontend data");
     return;
   }
 
@@ -334,10 +331,32 @@ function main() {
 
   const transformed = transform(records);
   console.log(`Sync: produced ${transformed.length} communities after grouping`);
+
+  // ── Safety check: don't overwrite better data with worse ───────────
+  if (fs.existsSync(FRONTEND_OUTPUT)) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(FRONTEND_OUTPUT, "utf-8"));
+      if (Array.isArray(existing) && existing.length > transformed.length) {
+        console.warn(
+          `Sync: WARNING — new output (${transformed.length} communities) is smaller than existing (${existing.length}).`
+        );
+        console.warn(
+          "Sync: Refusing to overwrite. Use --force to override."
+        );
+        if (!process.argv.includes("--force")) {
+          return;
+        }
+        console.warn("Sync: --force flag set, overwriting anyway.");
+      }
+    } catch {
+      // Existing file is corrupt, safe to overwrite
+    }
+  }
+
   console.log("Sync: communities:", transformed.map((c) => c.name).join(", "));
 
   fs.writeFileSync(FRONTEND_OUTPUT, JSON.stringify(transformed, null, 2), "utf-8");
-  console.log("Sync: wrote", FRONTEND_OUTPUT);
+  console.log(`Sync: wrote ${transformed.length} communities to`, FRONTEND_OUTPUT);
 }
 
 main();

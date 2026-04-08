@@ -11,6 +11,11 @@ import { CommunityCard } from "@/components/CommunityCard";
 import { Badge } from "@/components/Badge";
 import { InsightCallout } from "@/components/InsightCallout";
 import { LeadForm } from "@/components/LeadForm";
+import { Community } from "@/types";
+
+function hasEditorialContent(c: Community): boolean {
+  return c.pros.length > 0 || c.cons.length > 0 || c.notes.length > 0;
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -208,114 +213,111 @@ export default async function CommunityDetailPage({ params }: PageProps) {
       </section>
 
       {/* Our Insights — only show when there's editorial content */}
-      {(community.pros.length > 0 || community.cons.length > 0 || community.notes.length > 0) && (
-      <section className="bg-white py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-600 text-[13px] font-semibold px-4 py-1.5 rounded-full mb-5">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5.002 5.002 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                  />
-                </svg>
-                Our Insights
-              </div>
-              <h2 className="text-3xl sm:text-[40px] font-bold text-gray-900 tracking-tight leading-[1.15] mb-4">
-                The Honest Take on {community.name}
-              </h2>
-              <p className="text-gray-500 text-[17px] leading-relaxed">
-                We tour and evaluate every community. Here is what we think you should know before visiting.
-              </p>
-            </div>
-
-            {/* Pros */}
-            {community.pros.length > 0 && (
-            <div className="mb-8">
-              <h3 className="text-[17px] font-semibold text-gray-900 mb-5 flex items-center gap-3">
-                <span className="w-9 h-9 bg-emerald-50 rounded-[10px] flex items-center justify-center">
-                  <svg className="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                </span>
-                What We Like
-              </h3>
-              <div className="space-y-3">
-                {community.pros.map((pro, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-3.5 bg-emerald-50/40 border border-emerald-100 rounded-[14px] p-5"
-                  >
-                    <svg className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <p className="text-[14px] text-gray-600 leading-[1.55]">{pro}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            )}
-
-            {/* Cons */}
-            {community.cons.length > 0 && (
-            <div className="mb-8">
-              <h3 className="text-[17px] font-semibold text-gray-900 mb-5 flex items-center gap-3">
-                <span className="w-9 h-9 bg-amber-50 rounded-[10px] flex items-center justify-center">
-                  <svg className="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
-                </span>
-                What to Watch Out For
-              </h3>
-              <div className="space-y-3">
-                {community.cons.map((con, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-3.5 bg-amber-50/40 border border-amber-100 rounded-[14px] p-5"
-                  >
-                    <svg className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01" />
-                    </svg>
-                    <p className="text-[14px] text-gray-600 leading-[1.55]">{con}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            )}
-
-            {/* Insider notes */}
-            {community.notes.length > 0 && (
-            <div>
-              <h3 className="text-[17px] font-semibold text-gray-900 mb-5 flex items-center gap-3">
-                <span className="w-9 h-9 bg-purple-50 rounded-[10px] flex items-center justify-center">
-                  <svg className="w-4 h-4 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      {hasEditorialContent(community) && (
+        <section className="bg-white py-16 lg:py-24">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-600 text-[13px] font-semibold px-4 py-1.5 rounded-full mb-5">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5.002 5.002 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
                     />
                   </svg>
-                </span>
-                Insider Tips
-              </h3>
-              <div className="space-y-3">
-                {community.notes.map((note, index) => (
-                  <InsightCallout key={index} variant="tip">
-                    {note}
-                  </InsightCallout>
-                ))}
+                  Our Insights
+                </div>
+                <h2 className="text-3xl sm:text-[40px] font-bold text-gray-900 tracking-tight leading-[1.15] mb-4">
+                  The Honest Take on {community.name}
+                </h2>
+                <p className="text-gray-500 text-[17px] leading-relaxed">
+                  We tour and evaluate every community. Here is what we think you should know before visiting.
+                </p>
               </div>
+
+              {community.pros.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-[17px] font-semibold text-gray-900 mb-5 flex items-center gap-3">
+                    <span className="w-9 h-9 bg-emerald-50 rounded-[10px] flex items-center justify-center">
+                      <svg className="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    What We Like
+                  </h3>
+                  <div className="space-y-3">
+                    {community.pros.map((pro, index) => (
+                      <div
+                        key={index}
+                        className="flex items-start gap-3.5 bg-emerald-50/40 border border-emerald-100 rounded-[14px] p-5"
+                      >
+                        <svg className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path
+                            fillRule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <p className="text-[14px] text-gray-600 leading-[1.55]">{pro}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {community.cons.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-[17px] font-semibold text-gray-900 mb-5 flex items-center gap-3">
+                    <span className="w-9 h-9 bg-amber-50 rounded-[10px] flex items-center justify-center">
+                      <svg className="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                      </svg>
+                    </span>
+                    What to Watch Out For
+                  </h3>
+                  <div className="space-y-3">
+                    {community.cons.map((con, index) => (
+                      <div
+                        key={index}
+                        className="flex items-start gap-3.5 bg-amber-50/40 border border-amber-100 rounded-[14px] p-5"
+                      >
+                        <svg className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01" />
+                        </svg>
+                        <p className="text-[14px] text-gray-600 leading-[1.55]">{con}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {community.notes.length > 0 && (
+                <div>
+                  <h3 className="text-[17px] font-semibold text-gray-900 mb-5 flex items-center gap-3">
+                    <span className="w-9 h-9 bg-purple-50 rounded-[10px] flex items-center justify-center">
+                      <svg className="w-4 h-4 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5.002 5.002 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                        />
+                      </svg>
+                    </span>
+                    Insider Tips
+                  </h3>
+                  <div className="space-y-3">
+                    {community.notes.map((note, index) => (
+                      <InsightCallout key={index} variant="tip">
+                        {note}
+                      </InsightCallout>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-            )}
           </div>
-        </div>
-      </section>
+        </section>
       )}
 
       {/* Video tour */}

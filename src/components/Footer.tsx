@@ -56,8 +56,8 @@ export function Footer() {
   return (
     <footer className="bg-gray-50 border-t border-gray-200/80">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 lg:py-16">
-        {/* Main layout: brand left, nav columns right */}
-        <div className="flex flex-col lg:flex-row lg:gap-24">
+        {/* Main layout: brand anchored left, nav columns pushed right */}
+        <div className="flex flex-col lg:flex-row lg:justify-between">
           {/* Brand block */}
           <div className="lg:w-[320px] shrink-0 mb-10 lg:mb-0">
             <p className="text-[14px] text-gray-400 leading-[1.7] mb-6 max-w-[300px]">
@@ -81,8 +81,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Nav columns */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-16 gap-y-10 flex-1">
+          {/* Nav columns — grouped tightly on the right */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-10">
             <FooterColumn title="Explore">
               <ul className="space-y-2.5">
                 {footerLinks.explore.map((link) => (

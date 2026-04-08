@@ -9,10 +9,16 @@ const footerLinks = {
     { href: "/about", label: "About" },
   ],
   areas: [
-    { href: "/communities?city=Parker", label: "Parker" },
-    { href: "/communities?city=Castle+Rock", label: "Castle Rock" },
     { href: "/communities?city=Aurora", label: "Aurora" },
+    { href: "/communities?city=Castle+Rock", label: "Castle Rock" },
+    { href: "/communities?city=Parker", label: "Parker" },
+    { href: "/communities?city=Thornton", label: "Thornton" },
+    { href: "/communities?city=Brighton", label: "Brighton" },
+    { href: "/communities?city=Commerce+City", label: "Commerce City" },
+    { href: "/communities?city=Centennial", label: "Centennial" },
     { href: "/communities?city=Littleton", label: "Littleton" },
+    { href: "/communities?city=Erie", label: "Erie" },
+    { href: "/communities?city=Denver", label: "Denver" },
   ],
   resources: [
     { href: "/contact", label: "Get Your New Build List" },
@@ -73,7 +79,7 @@ export function Footer() {
           {/* Areas */}
           <div>
             <h3 className="text-[12px] font-semibold text-white uppercase tracking-widest mb-5">Areas</h3>
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
               {footerLinks.areas.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-[14px] text-gray-400 hover:text-white transition-colors duration-150">

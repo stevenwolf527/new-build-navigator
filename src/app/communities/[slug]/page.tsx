@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { communities, getCommunityBySlug } from "@/data/communities";
 import { getListingsByCommunity } from "@/data/listings";
-import { formatPrice, formatPriceRange, getYouTubeEmbedUrl, FALLBACK_IMAGE } from "@/lib/utils";
+import { formatPrice, formatPriceRange, getYouTubeEmbedUrl } from "@/lib/utils";
+import { getImagesForCommunity, isPlaceholder, FALLBACK_IMAGES } from "@/lib/image-utils";
+import ResilientImage from "@/components/ResilientImage";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ListingCard } from "@/components/ListingCard";
 import { CommunityCard } from "@/components/CommunityCard";
@@ -68,13 +69,18 @@ export default async function CommunityDetailPage({ params }: PageProps) {
     .filter((c) => c.id !== community.id && (c.city === community.city || c.area === community.area))
     .slice(0, 3);
 
+  const assignedImages = getImagesForCommunity(community);
+  const hasRealImages = community.images?.length > 0 && !isPlaceholder(community.images[0]);
+  const displayImages = hasRealImages ? community.images : assignedImages;
+
   return (
     <>
       {/* Hero */}
       <section className="relative bg-gray-900">
         <div className="relative h-[340px] sm:h-[440px] lg:h-[500px]">
-          <Image
-            src={community.images?.[0] || FALLBACK_IMAGE}
+          <ResilientImage
+            src={displayImages[0]}
+            fallbackSrc={assignedImages[0]}
             alt={community.name}
             fill
             className="object-cover opacity-70"
@@ -195,10 +201,11 @@ export default async function CommunityDetailPage({ params }: PageProps) {
             {/* Sidebar - image gallery */}
             <div className="lg:col-span-1">
               <div className="space-y-5 sticky top-24">
-                {community.images.slice(1).map((image, index) => (
-                  <div key={index} className="relative aspect-[4/3] rounded-[20px] overflow-hidden shadow-sm">
-                    <Image
+                {displayImages.slice(1).map((image, index) => (
+                  <div key={index} className="relative aspect-[4/3] rounded-[20px] overflow-hidden shadow-sm bg-gray-100">
+                    <ResilientImage
                       src={image}
+                      fallbackSrc={FALLBACK_IMAGES.landscape}
                       alt={`${community.name} photo ${index + 2}`}
                       fill
                       className="object-cover"

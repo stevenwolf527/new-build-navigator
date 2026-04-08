@@ -1,7 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { getFeaturedCommunities } from "@/data/communities";
 import { getFeaturedVideos } from "@/data/videos";
+import { getHeroImage, FALLBACK_IMAGES } from "@/lib/image-utils";
+import ResilientImage from "@/components/ResilientImage";
 import { CommunityCard } from "@/components/CommunityCard";
 import { VideoCard } from "@/components/VideoCard";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -135,9 +136,10 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="relative rounded-[24px] overflow-hidden shadow-xl aspect-[4/3]">
-                <Image
-                  src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"
+              <div className="relative rounded-[24px] overflow-hidden shadow-xl aspect-[4/3] bg-gray-100">
+                <ResilientImage
+                  src={getHeroImage()}
+                  fallbackSrc={FALLBACK_IMAGES.primary}
                   alt="Modern new construction home in Colorado"
                   fill
                   className="object-cover"

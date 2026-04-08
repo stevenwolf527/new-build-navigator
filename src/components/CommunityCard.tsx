@@ -1,7 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Community } from "@/types";
-import { formatPriceRange, FALLBACK_IMAGE } from "@/lib/utils";
+import { formatPriceRange } from "@/lib/utils";
+import { getImagesForCommunity, isPlaceholder } from "@/lib/image-utils";
+import ResilientImage from "./ResilientImage";
 import { Badge } from "./Badge";
 
 interface CommunityCardProps {
@@ -9,14 +10,19 @@ interface CommunityCardProps {
 }
 
 export function CommunityCard({ community }: CommunityCardProps) {
+  const assignedImages = getImagesForCommunity(community);
+  const hasRealImage = community.images?.[0] && !isPlaceholder(community.images[0]);
+  const primaryImage = hasRealImage ? community.images[0] : assignedImages[0];
+
   return (
     <Link
       href={`/communities/${community.slug}`}
       className="group block bg-white rounded-[20px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 ease-out hover:-translate-y-[2px]"
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <Image
-          src={community.images?.[0] || FALLBACK_IMAGE}
+      <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+        <ResilientImage
+          src={primaryImage}
+          fallbackSrc={assignedImages[0]}
           alt={community.name}
           fill
           className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"

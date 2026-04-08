@@ -14,8 +14,6 @@ export function formatPriceRange(min: number, max: number): string {
   return `${formatPrice(min)} – ${formatPrice(max)}`;
 }
 
-export const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80";
-
 export function cn(...classes: (string | boolean | undefined | null)[]): string {
   return classes.filter(Boolean).join(" ");
 }

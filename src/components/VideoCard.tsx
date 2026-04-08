@@ -1,5 +1,6 @@
-import Image from "next/image";
 import { Video } from "@/types";
+import { FALLBACK_IMAGES } from "@/lib/image-utils";
+import ResilientImage from "./ResilientImage";
 import { Badge } from "./Badge";
 
 interface VideoCardProps {
@@ -22,9 +23,10 @@ export function VideoCard({ video }: VideoCardProps) {
       rel="noopener noreferrer"
       className="group block bg-white rounded-[20px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 ease-out hover:-translate-y-[2px]"
     >
-      <div className="relative aspect-video overflow-hidden">
-        <Image
+      <div className="relative aspect-video overflow-hidden bg-gray-100">
+        <ResilientImage
           src={video.thumbnail}
+          fallbackSrc={FALLBACK_IMAGES.primary}
           alt={video.title}
           fill
           className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"

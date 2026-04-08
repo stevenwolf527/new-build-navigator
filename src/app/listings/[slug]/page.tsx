@@ -1,10 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { listings, getListingBySlug } from "@/data/listings";
 import { getCommunityBySlug } from "@/data/communities";
 import { formatPrice } from "@/lib/utils";
+import { getListingImages, FALLBACK_IMAGES } from "@/lib/image-utils";
+import ResilientImage from "@/components/ResilientImage";
 import { Badge } from "@/components/Badge";
 import { InsightCallout } from "@/components/InsightCallout";
 import { LeadForm } from "@/components/LeadForm";
@@ -75,9 +76,10 @@ export default async function ListingDetailPage({
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 rounded-[20px] overflow-hidden">
-            <div className="relative aspect-[4/3]">
-              <Image
+            <div className="relative aspect-[4/3] bg-gray-100">
+              <ResilientImage
                 src={listing.images[0]}
+                fallbackSrc={getListingImages(listing)[0]}
                 alt={listing.address}
                 fill
                 className="object-cover"
@@ -86,9 +88,10 @@ export default async function ListingDetailPage({
               />
             </div>
             {listing.images[1] && (
-              <div className="relative aspect-[4/3] hidden lg:block">
-                <Image
+              <div className="relative aspect-[4/3] hidden lg:block bg-gray-100">
+                <ResilientImage
                   src={listing.images[1]}
+                  fallbackSrc={FALLBACK_IMAGES.interior}
                   alt={`${listing.address} interior`}
                   fill
                   className="object-cover"

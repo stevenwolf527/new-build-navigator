@@ -1,7 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Listing } from "@/types";
 import { formatPrice } from "@/lib/utils";
+import { getListingImages } from "@/lib/image-utils";
+import ResilientImage from "./ResilientImage";
 import { Badge } from "./Badge";
 
 interface ListingCardProps {
@@ -23,14 +24,17 @@ const statusVariants: Record<string, "green" | "red" | "blue" | "default" | "ora
 };
 
 export function ListingCard({ listing }: ListingCardProps) {
+  const fallbackImages = getListingImages(listing);
+
   return (
     <Link
       href={`/listings/${listing.slug}`}
       className="group block bg-white rounded-[20px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 ease-out hover:-translate-y-[2px]"
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <Image
+      <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+        <ResilientImage
           src={listing.image}
+          fallbackSrc={fallbackImages[0]}
           alt={listing.address}
           fill
           className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"

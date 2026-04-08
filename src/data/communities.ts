@@ -1,6 +1,12 @@
 import { Community } from "@/types";
+import pipelineData from "./pipeline-communities.json";
 
-export const communities: Community[] = [
+// ── Seed data: hand-curated editorial content ────────────────────────
+// These communities have rich pros/cons/notes that pipeline can't generate.
+// When a pipeline record matches by slug, we merge pipeline's fresh data
+// with seed's editorial content.
+
+const seedCommunities: Community[] = [
   {
     id: "1",
     slug: "terrain-castle-rock",
@@ -266,6 +272,57 @@ export const communities: Community[] = [
     amenities: ["Recreation Center", "Pools", "Fitness Center", "Trails", "Parks", "Sports Fields"],
   },
 ];
+
+// ── Merge pipeline data with seed editorial content ──────────────────
+
+// Build a lookup of seed communities by slug for fast merging
+const seedBySlug = new Map(seedCommunities.map((c) => [c.slug, c]));
+
+// Cast pipeline JSON (which has _source) to Community, stripping _source
+const pipelineCommunities: Community[] = (pipelineData as unknown as (Community & { _source?: string })[]).map(
+  ({ _source, ...rest }) => rest
+);
+
+// Merge: pipeline data gets seed's editorial fields when slug matches.
+// Pipeline-only communities (no seed match) pass through as-is.
+// Seed-only communities (no pipeline match) are kept as-is.
+function mergeCommunities(): Community[] {
+  const merged: Community[] = [];
+  const usedSeedSlugs = new Set<string>();
+
+  for (const pipeline of pipelineCommunities) {
+    const seed = seedBySlug.get(pipeline.slug);
+    if (seed) {
+      usedSeedSlugs.add(pipeline.slug);
+      // Pipeline provides fresh pricing/status/builders; seed provides editorial
+      merged.push({
+        ...seed,
+        // Update from pipeline: pricing, status, builders, amenities
+        priceRange: pipeline.priceRange.min > 0 ? pipeline.priceRange : seed.priceRange,
+        status: pipeline.status,
+        builders: [...new Set([...seed.builders, ...pipeline.builders])],
+        homeTypes: [...new Set([...seed.homeTypes, ...pipeline.homeTypes])],
+        amenities: [...new Set([...seed.amenities, ...pipeline.amenities])],
+        hoa: pipeline.hoa || seed.hoa,
+        schoolDistrict: pipeline.schoolDistrict !== "Contact for details" ? pipeline.schoolDistrict : seed.schoolDistrict,
+      });
+    } else {
+      // Pipeline-only community — new discovery
+      merged.push(pipeline);
+    }
+  }
+
+  // Add seed-only communities (not found in pipeline)
+  for (const seed of seedCommunities) {
+    if (!usedSeedSlugs.has(seed.slug)) {
+      merged.push(seed);
+    }
+  }
+
+  return merged;
+}
+
+export const communities: Community[] = mergeCommunities();
 
 export function getCommunityBySlug(slug: string): Community | undefined {
   return communities.find((c) => c.slug === slug);

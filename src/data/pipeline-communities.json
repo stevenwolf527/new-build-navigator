@@ -1,0 +1,143 @@
+[
+  {
+    "id": "a1b2c3d4",
+    "slug": "terrain-castle-rock",
+    "name": "Terrain",
+    "city": "Castle Rock",
+    "area": "South Denver Metro",
+    "builders": [
+      "Lennar"
+    ],
+    "priceRange": {
+      "min": 525000,
+      "max": 750000
+    },
+    "status": "active",
+    "hoa": {
+      "monthly": 85,
+      "includes": [
+        "Common areas"
+      ]
+    },
+    "homeTypes": [
+      "Single-family",
+      "Ranch",
+      "Two-story"
+    ],
+    "shortDescription": "Master-planned community in Castle Rock with mountain views, extensive trails, and top-rated Douglas County schools.",
+    "longDescription": "Master-planned community in Castle Rock with mountain views, extensive trails, and top-rated Douglas County schools.",
+    "pros": [],
+    "cons": [],
+    "notes": [],
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"
+    ],
+    "featuredVideo": null,
+    "featured": false,
+    "yearEstablished": 2026,
+    "totalHomes": 0,
+    "schoolDistrict": "Douglas County RE-1 School District",
+    "amenities": [
+      "Trails",
+      "Parks",
+      "Playground",
+      "Community Center",
+      "Dog Park"
+    ],
+    "_source": "pipeline"
+  },
+  {
+    "id": "e5f6g7h8",
+    "slug": "pinery-west-parker",
+    "name": "Pinery West",
+    "city": "Parker",
+    "area": "Parker / Elizabeth Corridor",
+    "builders": [
+      "Toll Brothers"
+    ],
+    "priceRange": {
+      "min": 625000,
+      "max": 975000
+    },
+    "status": "active",
+    "hoa": {
+      "monthly": 110,
+      "includes": [
+        "Common areas"
+      ]
+    },
+    "homeTypes": [
+      "Single-family",
+      "Estate lots"
+    ],
+    "shortDescription": "Upscale community near Parker with large lots and premium Toll Brothers finishes.",
+    "longDescription": "Upscale community near Parker with large lots and premium Toll Brothers finishes.",
+    "pros": [],
+    "cons": [],
+    "notes": [],
+    "images": [
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80"
+    ],
+    "featuredVideo": null,
+    "featured": false,
+    "yearEstablished": 2026,
+    "totalHomes": 0,
+    "schoolDistrict": "Douglas County RE-1 School District",
+    "amenities": [
+      "Pool",
+      "Clubhouse",
+      "Trails",
+      "Playground",
+      "Tennis Courts"
+    ],
+    "_source": "pipeline"
+  },
+  {
+    "id": "i9j0k1l2",
+    "slug": "painted-prairie-aurora",
+    "name": "Painted Prairie",
+    "city": "Aurora",
+    "area": "Southeast Aurora",
+    "builders": [
+      "Oakwood Homes"
+    ],
+    "priceRange": {
+      "min": 425000,
+      "max": 585000
+    },
+    "status": "active",
+    "hoa": {
+      "monthly": 65,
+      "includes": [
+        "Common areas"
+      ]
+    },
+    "homeTypes": [
+      "Single-family",
+      "Paired homes",
+      "Townhomes"
+    ],
+    "shortDescription": "Fast-growing Aurora community with diverse price points and a village-style commercial center.",
+    "longDescription": "Fast-growing Aurora community with diverse price points and a village-style commercial center.",
+    "pros": [],
+    "cons": [],
+    "notes": [],
+    "images": [
+      "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=800&q=80"
+    ],
+    "featuredVideo": null,
+    "featured": false,
+    "yearEstablished": 2026,
+    "totalHomes": 0,
+    "schoolDistrict": "Cherry Creek School District",
+    "amenities": [
+      "Parks",
+      "Trails",
+      "Community Garden",
+      "Event Lawn",
+      "Playground",
+      "Commercial Village"
+    ],
+    "_source": "pipeline"
+  }
+]

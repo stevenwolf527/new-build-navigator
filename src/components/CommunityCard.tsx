@@ -37,7 +37,7 @@ export function CommunityCard({ community }: CommunityCardProps) {
       </div>
       <div className="p-6">
         <div className="flex items-start justify-between gap-2 mb-1.5">
-          <h3 className="text-[17px] font-semibold text-gray-900 group-hover:text-brand-600 transition-colors duration-150" style={{ letterSpacing: "-0.02em" }}>
+          <h3 className="text-[17px] font-semibold text-gray-900 group-hover:text-brand-600 transition-colors duration-150">
             {community.name}
           </h3>
         </div>

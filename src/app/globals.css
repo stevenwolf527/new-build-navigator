@@ -123,6 +123,11 @@ html {
   background: var(--text-tertiary);
 }
 
+/* Tight headline kerning — editorial feel */
+h1, h2, h3 {
+  letter-spacing: -0.025em;
+}
+
 /* Focus styles for accessibility */
 *:focus-visible {
   outline: 2px solid var(--color-brand-500);

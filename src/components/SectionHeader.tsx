@@ -28,7 +28,7 @@ export function SectionHeader({
           {eyebrow}
         </p>
       )}
-      <h2 className="text-3xl sm:text-[40px] font-bold text-gray-900 leading-[1.15]" style={{ letterSpacing: "-0.02em" }}>
+      <h2 className="text-3xl sm:text-[40px] font-bold text-gray-900 leading-[1.15]">
         {title}
       </h2>
       {description && (

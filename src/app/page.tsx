@@ -95,7 +95,7 @@ export default function Home() {
                 <span className="w-2 h-2 bg-green-500 rounded-full" />
                 Colorado New Build Specialist
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-gray-900 leading-[1.08]" style={{ letterSpacing: "-0.02em" }}>
+              <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-gray-900 leading-[1.08]">
                 Find the Best New Construction Homes in{" "}
                 <span className="text-brand-600">Colorado</span>
               </h1>
@@ -215,7 +215,7 @@ export default function Home() {
             {processSteps.map((step) => (
               <div key={step.step} className="relative">
                 <div className={`text-[48px] font-bold ${step.color} opacity-30 leading-none mb-4`}>{step.step}</div>
-                <h3 className="text-[17px] font-semibold text-gray-900 mb-2.5" style={{ letterSpacing: "-0.02em" }}>{step.title}</h3>
+                <h3 className="text-[17px] font-semibold text-gray-900 mb-2.5">{step.title}</h3>
                 <p className="text-[14px] text-gray-500 leading-[1.55]">{step.description}</p>
               </div>
             ))}
@@ -259,7 +259,7 @@ export default function Home() {
                 <div className="inline-flex items-center gap-2 bg-orange-50 text-orange-600 text-[13px] font-medium px-3.5 py-1.5 rounded-full mb-5">
                   Free Guide
                 </div>
-                <h2 className="text-3xl sm:text-[36px] font-bold text-gray-900 leading-[1.15] mb-5" style={{ letterSpacing: "-0.02em" }}>
+                <h2 className="text-3xl sm:text-[36px] font-bold text-gray-900 leading-[1.15] mb-5">
                   7 Mistakes Buyers Make With New Construction Homes
                 </h2>
                 <p className="text-[16px] text-gray-500 leading-[1.6] mb-8">
@@ -283,7 +283,7 @@ export default function Home() {
                 </ul>
               </div>
               <div className="p-10 lg:p-14 bg-white">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2" style={{ letterSpacing: "-0.02em" }}>Get the free guide</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Get the free guide</h3>
                 <p className="text-[14px] text-gray-500 mb-7">
                   Plus a curated new build list for your target area.
                 </p>
@@ -335,7 +335,7 @@ export default function Home() {
       {/* Final CTA */}
       <section className="bg-gray-900 py-20 lg:py-24">
         <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-[40px] font-bold text-white leading-[1.15] mb-5" style={{ letterSpacing: "-0.02em" }}>
+          <h2 className="text-3xl sm:text-[40px] font-bold text-white leading-[1.15] mb-5">
             Ready to Find Your New Build?
           </h2>
           <p className="text-[17px] text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
